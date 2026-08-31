@@ -1,4 +1,4 @@
-package laboratorio.Estrategias;
+package laboratorio.estrategias;
 
 import robocode.JuniorRobot;
 
@@ -71,6 +71,7 @@ public final class EstrategiaCampera implements EstrategiaDeGuerra{
 
     @Override
     public void onScannedRobot(JuniorRobot robot) {
+        robot.bearGunTo(robot.scannedBearing);
         robot.fire(1);
     }
 

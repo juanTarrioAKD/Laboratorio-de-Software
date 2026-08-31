@@ -3,10 +3,10 @@ import robocode.*;
 import laboratorio.estrategias.EstrategiaDeGuerra;
 import laboratorio.estrategias.EstrategiaCampera;
 
-public class Tarríos extends JuniorRobot
+public class Tarrios extends JuniorRobot
 {
 	private final EstrategiaDeGuerra estrategia;
-	public LaboRobot() {
+	public Tarrios() {
 		this.estrategia = new EstrategiaCampera();
 	}
 
