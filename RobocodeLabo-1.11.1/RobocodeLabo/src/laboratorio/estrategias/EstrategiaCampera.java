@@ -72,17 +72,19 @@ public final class EstrategiaCampera implements EstrategiaDeGuerra{
     @Override
     public void onScannedRobot(JuniorRobot robot) {
         robot.bearGunTo(robot.scannedBearing);
-        robot.fire(1);
+        robot.fire(calcularPotencia(robot.scannedDistance));
     }
 
     @Override
     public void onHitByBullet(JuniorRobot robot) {
         robot.bearGunTo(robot.hitByBulletBearing);
+        robot.fire(calcularPotencia(robot.scannedDistance));
     }
 
     @Override
     public void onHitWall(JuniorRobot robot) {
-        robot.back(20);
+        robot.back(10);
     }
 
+    private double calcularPotencia(double distancia) { return (distancia < 100) ? 3 : 2; }
 }
