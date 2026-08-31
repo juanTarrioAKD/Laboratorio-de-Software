@@ -1,19 +1,20 @@
 package laboratorio;
 import robocode.*;
+import laboratorio.estrategias.EstrategiaDeGuerra;
+import laboratorio.estrategias.EstrategiaCampera;
 
-
-public class LaboRobot extends JuniorRobot
+public class Tarríos extends JuniorRobot
 {
+	private final EstrategiaDeGuerra estrategia;
+	public LaboRobot() {
+		this.estrategia = new EstrategiaCampera();
+	}
 
 	@Override	
 	public void run() {
 
 		setColors(orange, blue, white, yellow, black);
-		ahead(100);
-		turnGunRight(360);
-		back(100);
-		turnGunRight(360);
-		
+		estrategia.run(this);
 	}
 
 	/**
@@ -21,7 +22,7 @@ public class LaboRobot extends JuniorRobot
 	 */
 	@Override
 	public void onScannedRobot() {
-		fire(1);
+		estrategia.onScannedRobot(this);
 	}
 
 	/**
@@ -29,7 +30,7 @@ public class LaboRobot extends JuniorRobot
 	 */
 	@Override
 	public void onHitByBullet() {
-		back(10);
+		estrategia.onHitByBullet(this);
 	}
 	
 	/**
@@ -37,6 +38,6 @@ public class LaboRobot extends JuniorRobot
 	 */
 	@Override
 	public void onHitWall() {
-		back(20);
+		estrategia.onHitWall(this);
 	}	
 }

@@ -2,7 +2,7 @@ package laboratorio.Estrategias;
 
 import robocode.JuniorRobot;
 
-public interface EstrategiaDeGuerra {
+public sealed interface EstrategiaDeGuerra permits EstrategiaCampera{
 
     void run(JuniorRobot);
     void onScannedRobot(JuniorRobot);
