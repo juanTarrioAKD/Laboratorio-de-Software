@@ -2,7 +2,7 @@ package laboratorio.estrategias;
 
 import robocode.JuniorRobot;
 
-public final class EstrategiaCampera implements EstrategiaDeGuerra{
+public final class EstrategiaCampera extends EstrategiaDeGuerra{
 
 
     @Override
@@ -86,5 +86,4 @@ public final class EstrategiaCampera implements EstrategiaDeGuerra{
         robot.back(10);
     }
 
-    private double calcularPotencia(double distancia) { return (distancia < 100) ? 3 : 2; }
 }

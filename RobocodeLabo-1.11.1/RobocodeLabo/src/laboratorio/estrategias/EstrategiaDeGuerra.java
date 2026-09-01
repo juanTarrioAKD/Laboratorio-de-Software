@@ -2,11 +2,11 @@ package laboratorio.estrategias;
 
 import robocode.JuniorRobot;
 
-public sealed interface EstrategiaDeGuerra permits EstrategiaCampera {
+public sealed abstract class EstrategiaDeGuerra permits EstrategiaCampera, EstrategiaParedErratica {
 
-    void run(JuniorRobot robot);
-    void onScannedRobot(JuniorRobot robot);
-    void onHitByBullet(JuniorRobot robot);
-    void onHitWall(JuniorRobot robot);
-
+    public abstract void run(JuniorRobot robot);
+    public abstract void onScannedRobot(JuniorRobot robot);
+    public abstract void onHitByBullet(JuniorRobot robot);
+    public abstract void onHitWall(JuniorRobot robot);
+    protected double calcularPotencia(double distancia) { return (distancia < 100) ? 3 : 2; }
 }

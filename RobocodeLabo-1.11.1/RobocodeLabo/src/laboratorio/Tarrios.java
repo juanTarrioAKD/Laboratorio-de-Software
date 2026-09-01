@@ -1,4 +1,5 @@
 package laboratorio;
+import laboratorio.estrategias.EstrategiaParedErratica;
 import robocode.*;
 import laboratorio.estrategias.EstrategiaDeGuerra;
 import laboratorio.estrategias.EstrategiaCampera;
@@ -7,7 +8,7 @@ public class Tarrios extends JuniorRobot
 {
 	private final EstrategiaDeGuerra estrategia;
 	public Tarrios() {
-		this.estrategia = new EstrategiaCampera();
+		this.estrategia = new EstrategiaParedErratica();
 	}
 
 	@Override	
