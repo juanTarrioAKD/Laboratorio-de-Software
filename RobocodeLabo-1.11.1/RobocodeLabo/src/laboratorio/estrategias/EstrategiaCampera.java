@@ -2,7 +2,7 @@ package laboratorio.estrategias;
 
 import robocode.JuniorRobot;
 
-public final class EstrategiaCampera implements EstrategiaDeGuerra{
+public final class EstrategiaCampera extends EstrategiaDeGuerra{
 
 
     @Override
@@ -72,17 +72,18 @@ public final class EstrategiaCampera implements EstrategiaDeGuerra{
     @Override
     public void onScannedRobot(JuniorRobot robot) {
         robot.bearGunTo(robot.scannedBearing);
-        robot.fire(1);
+        robot.fire(calcularPotencia(robot.scannedDistance));
     }
 
     @Override
     public void onHitByBullet(JuniorRobot robot) {
         robot.bearGunTo(robot.hitByBulletBearing);
+        robot.fire(calcularPotencia(robot.scannedDistance));
     }
 
     @Override
     public void onHitWall(JuniorRobot robot) {
-        robot.back(20);
+        robot.back(10);
     }
 
 }
