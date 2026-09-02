@@ -1,8 +1,7 @@
-package laboratorio;
-import laboratorio.estrategias.EstrategiaParedErratica;
+package laboratorioTarrio;
+import laboratorioTarrio.estrategias.EstrategiaParedErratica;
 import robocode.*;
-import laboratorio.estrategias.EstrategiaDeGuerra;
-import laboratorio.estrategias.EstrategiaCampera;
+import laboratorioTarrio.estrategias.EstrategiaDeGuerra;
 
 public class Tarrios extends JuniorRobot
 {
