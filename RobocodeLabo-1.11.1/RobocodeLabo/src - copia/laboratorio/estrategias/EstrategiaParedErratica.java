@@ -1,4 +1,4 @@
-package laboratorio.estrategias;
+package laboratorioTarrio.estrategias;
 import robocode.JuniorRobot;
 import java.util.Random;
 
@@ -133,22 +133,5 @@ public final class EstrategiaParedErratica extends EstrategiaDeGuerra {
             double dy = destino.y() - robot.robotY;
             int distancia = (int) Math.round(Math.hypot(dx, dy));
             robot.ahead(distancia);
-        }
-
-        @Override
-        public void onScannedRobot(JuniorRobot robot) {
-            robot.bearGunTo(robot.scannedBearing);
-            robot.fire(calcularPotencia(robot.scannedDistance));
-        }
-
-        @Override
-        public void onHitByBullet(JuniorRobot robot) {
-            robot.bearGunTo(robot.hitByBulletBearing);
-            robot.fire(calcularPotencia(robot.scannedDistance));
-        }
-
-        @Override
-        public void onHitWall(JuniorRobot robot) {
-            robot.back(10);
         }
 }
