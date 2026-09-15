@@ -2,7 +2,7 @@ package laboratorioTarrio.estrategias;
 import robocode.JuniorRobot;
 import java.util.Random;
 
-public final class EstrategiaParedErratica extends EstrategiaDeGuerra {
+public final class EstrategiaParedErratica implements EstrategiaDeGuerra {
 
     private static final int MARGEN = 30;
     private static final int PASO_MIN = 60;
@@ -134,4 +134,24 @@ public final class EstrategiaParedErratica extends EstrategiaDeGuerra {
             int distancia = (int) Math.round(Math.hypot(dx, dy));
             robot.ahead(distancia);
         }
+
+
+    @Override
+    public void onScannedRobot(JuniorRobot robot) {
+        robot.bearGunTo(robot.scannedBearing);
+        robot.fire(calcularPotencia(robot.scannedDistance));
+    }
+
+    @Override
+    public void onHitByBullet(JuniorRobot robot) {
+        robot.bearGunTo(robot.hitByBulletBearing);
+        robot.fire(calcularPotencia(robot.scannedDistance));
+    }
+
+    @Override
+    public void onHitWall(JuniorRobot robot) {
+        robot.back(10);
+    }
+
+    private double calcularPotencia(double distancia) { return (distancia < 100) ? 3 : 2; }
 }
