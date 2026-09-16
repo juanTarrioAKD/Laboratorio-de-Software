@@ -1,15 +1,14 @@
 package laboratorioTarrio;
-import laboratorioTarrio.estrategias.EstrategiaParedErratica;
 import robocode.*;
-import laboratorioTarrio.estrategias.EstrategiaDeGuerra;
-import laboratorioTarrio.estrategas.IEstratega;
+import laboratorioTarrio.estrategias.IEstrategiaDeGuerra;
+import laboratorioTarrio.estrategias.IEstratega;
 import laboratorioTarrio.estrategias.EstrategaJohnPrice;
 
 public class Tarrios extends JuniorRobot
 {
 
 	private final IEstratega estratega;
-	private EstrategiaDeGuerra estrategia;
+	private IEstrategiaDeGuerra estrategia;
 
 	public Tarrios() {
 		this.estratega = EstrategaJohnPrice.INSTANCE;

@@ -1,11 +1,10 @@
 package laboratorioTarrio.estrategias; // mismo paquete que EstrategiaDeGuerra, por el sealed
 
-import laboratorioTarrio.estrategas.IEstratega;
 import robocode.JuniorRobot;
 
 public final class EstrategaJohnPrice implements IEstratega {
 
-    private static final class EstrategiaEvasiva implements EstrategiaDeGuerra {
+    static final class EstrategiaEvasiva implements IEstrategiaDeGuerra {
         private static final double DISTANCIA_MAXIMA_DISPARO = 250; // más lejos que esto, no vale la pena tirar
 
         private int sentido = 1; // alterna el lado del zigzag turno a turno
@@ -41,13 +40,13 @@ public final class EstrategaJohnPrice implements IEstratega {
         private double calcularPotencia(double distancia) { return (distancia < 100) ? 3 : 2; }
     }
 
-    private static final EstrategiaDeGuerra EVASIVA = new EstrategiaEvasiva();
+    private static final IEstrategiaDeGuerra EVASIVA = new EstrategiaEvasiva();
 
     public static final EstrategaJohnPrice INSTANCE = new EstrategaJohnPrice();
     private EstrategaJohnPrice() {}
 
     @Override
-    public EstrategiaDeGuerra analizarEntorno(JuniorRobot robot) {
+    public IEstrategiaDeGuerra analizarEntorno(JuniorRobot robot) {
         if (robot.energy < 50) {
             return EVASIVA;
         }

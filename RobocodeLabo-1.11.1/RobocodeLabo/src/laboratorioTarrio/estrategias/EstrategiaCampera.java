@@ -2,7 +2,7 @@ package laboratorioTarrio.estrategias;
 
 import robocode.JuniorRobot;
 
-public final class EstrategiaCampera implements EstrategiaDeGuerra{
+public final class EstrategiaCampera implements IEstrategiaDeGuerra{
 
     public static final EstrategiaCampera INSTANCE = new EstrategiaCampera();
     private EstrategiaCampera() {}
