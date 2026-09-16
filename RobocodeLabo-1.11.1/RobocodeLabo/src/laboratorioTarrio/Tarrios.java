@@ -1,20 +1,26 @@
 package laboratorioTarrio;
-import laboratorioTarrio.estrategias.EstrategiaParedErratica;
 import robocode.*;
-import laboratorioTarrio.estrategias.EstrategiaDeGuerra;
+import laboratorioTarrio.estrategias.IEstrategiaDeGuerra;
+import laboratorioTarrio.estrategias.IEstratega;
+import laboratorioTarrio.estrategias.EstrategaJohnPrice;
 
 public class Tarrios extends JuniorRobot
 {
-	private final EstrategiaDeGuerra estrategia;
+
+	private final IEstratega estratega;
+	private IEstrategiaDeGuerra estrategia;
+
 	public Tarrios() {
-		this.estrategia = new EstrategiaParedErratica();
+		this.estratega = EstrategaJohnPrice.INSTANCE;
 	}
 
 	@Override	
 	public void run() {
-
 		setColors(orange, blue, white, yellow, black);
-		estrategia.run(this);
+		while (true) {
+			estrategia = estratega.analizarEntorno(this);
+			estrategia.run(this);
+		}
 	}
 
 	/**
@@ -22,7 +28,9 @@ public class Tarrios extends JuniorRobot
 	 */
 	@Override
 	public void onScannedRobot() {
-		estrategia.onScannedRobot(this);
+		if (estrategia != null) {
+			estrategia.onScannedRobot(this);
+		}
 	}
 
 	/**
@@ -30,7 +38,9 @@ public class Tarrios extends JuniorRobot
 	 */
 	@Override
 	public void onHitByBullet() {
-		estrategia.onHitByBullet(this);
+		if (estrategia != null) {
+			estrategia.onHitByBullet(this);
+		}
 	}
 	
 	/**
@@ -38,6 +48,8 @@ public class Tarrios extends JuniorRobot
 	 */
 	@Override
 	public void onHitWall() {
-		estrategia.onHitWall(this);
+		if (estrategia != null) {
+			estrategia.onHitWall(this);
+		}
 	}	
 }
